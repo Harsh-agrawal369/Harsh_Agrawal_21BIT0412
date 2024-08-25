@@ -7,6 +7,7 @@ const socket = io('http://localhost:3000');
 function App() {
   const [gameState, setGameState] = useState(null);
   const [selectedCell, setSelectedCell] = useState(null);
+  const [winner, setWinner] = useState(null);
 
   useEffect(() => {
     socket.on('connect', () => {
@@ -15,7 +16,17 @@ function App() {
 
     socket.on('gameState', (newGameState) => {
       console.log('Received new game state:', newGameState);
-      setGameState(newGameState);
+      
+      const hasA = newGameState.board.some((cell) => cell && cell.startsWith('A'));
+      const hasB = newGameState.board.some((cell) => cell && cell.startsWith('B'));
+
+      if (!hasA) {
+        setWinner('B');
+      } else if (!hasB) {
+        setWinner('A');
+      } else {
+        setGameState(newGameState);
+      }
     });
 
     socket.on('disconnect', () => {
@@ -79,6 +90,7 @@ function App() {
       <h1>Chess-like Game</h1>
       {gameState ? (
         <>
+          {winner && <h2>Player {winner} wins!</h2>}
           <div className="current-player">Current Player: {gameState.currentPlayer}</div>
           <div className="game-board">
             {renderBoard()}
