@@ -42,7 +42,7 @@ function initializeGame() {
 
 function isValidMove(character, move, currentIndex) {
   const row = Math.floor(currentIndex / 5);
-  const col = currentIndex % 5;
+  const col = currentIndex;
 
   if (character.includes('P')) {
     switch (move) {
