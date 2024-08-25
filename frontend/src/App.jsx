@@ -101,7 +101,7 @@ function App() {
           </div>
         </>
       ) : (
-        <p>Waiting for game to load, Server might take some time to restart\...</p>
+        <p>Waiting for game to load, Server might take some time to restart...</p>
       )}
     </div>
   );
