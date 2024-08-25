@@ -1,0 +1,75 @@
+.App {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(5, 60px);
+  grid-gap: 2px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.cell {
+  width: 60px;
+  height: 60px;
+  background-color: #f0d9b5;
+  border: 1px solid #b58863;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cell:nth-child(odd) {
+  background-color: #b58863;
+}
+
+.cell.selected {
+  background-color: #e0e0ff;
+}
+
+.cell.occupied {
+  color: #000;
+}
+
+.move-options {
+  margin-bottom: 20px;
+}
+
+.move-options button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.move-history {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.history-list {
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.start-button {
+  font-size: 18px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.start-button:hover {
+  background-color: #45a049;
+}
