@@ -3,6 +3,7 @@ const cors = require("cors");
 const http = require("http");
 const socketIo = require("socket.io");
 const path = require("path");
+const e = require("cors");
 
 const app = express();
 const server = http.createServer(app);
@@ -37,11 +38,31 @@ const error = (message) => {
 
 function initializeGame() {
   gameState.board = [
-    "A-P1", "A-P2", "A-H1", "A-H2", "A-P3",
-    null, null, null, null, null,
-    null, null, null, null, null,
-    null, null, null, null, null,
-    "B-P1", "B-P2", "B-H1", "B-H2", "B-P3",
+    "A-P1",
+    "A-P2",
+    "A-H1",
+    "A-H2",
+    "A-P3",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "B-P1",
+    "B-P2",
+    "B-H1",
+    "B-H2",
+    "B-P3",
   ];
   gameState.currentPlayer = "A";
   gameState.moveHistory = [];
@@ -213,13 +234,13 @@ function isValidMove(character, move, currentIndex) {
       }
 
       if (
-        (gameState.board[currentIndex - 1] &&
-          gameState.board[currentIndex - 1].startsWith(
-            gameState.currentPlayer
-          )) 
+        gameState.board[currentIndex - 1] &&
+        gameState.board[currentIndex - 1].startsWith(gameState.currentPlayer)
       ) {
         error("You cannot move through your own piece");
         return false;
+      } else {
+        gameState.board[currentIndex - 1] = null;
       }
     } else if (move === "R") {
       if (col >= 3) {
@@ -228,13 +249,13 @@ function isValidMove(character, move, currentIndex) {
       }
 
       if (
-        (gameState.board[currentIndex + 1] &&
-          gameState.board[currentIndex + 1].startsWith(
-            gameState.currentPlayer
-          )) 
+        gameState.board[currentIndex + 1] &&
+        gameState.board[currentIndex + 1].startsWith(gameState.currentPlayer)
       ) {
         error("You cannot move through your own piece");
         return false;
+      } else {
+        gameState.board[currentIndex + 1] = null;
       }
     } else if (move === "F") {
       if (gameState.currentPlayer === "A") {
@@ -249,6 +270,8 @@ function isValidMove(character, move, currentIndex) {
         ) {
           error("You cannot move through your own piece");
           return false;
+        } else {
+          gameState.board[currentIndex + 10] = null;
         }
       } else {
         if (row <= 1) {
@@ -262,6 +285,8 @@ function isValidMove(character, move, currentIndex) {
         ) {
           error("You cannot move through your own piece");
           return false;
+        } else {
+          gameState.board[currentIndex - 10] = null;
         }
       }
     } else if (move === "B") {
@@ -272,13 +297,13 @@ function isValidMove(character, move, currentIndex) {
         }
 
         if (
-          (gameState.board[currentIndex - 10] &&
-            gameState.board[currentIndex - 10].startsWith(
-              gameState.currentPlayer
-            )) 
+          gameState.board[currentIndex - 10] &&
+          gameState.board[currentIndex - 10].startsWith(gameState.currentPlayer)
         ) {
           error("You cannot move through your own piece");
           return false;
+        } else {
+          gameState.board[currentIndex - 10] = null;
         }
       } else {
         if (row >= 3) {
@@ -287,13 +312,13 @@ function isValidMove(character, move, currentIndex) {
         }
 
         if (
-          (gameState.board[currentIndex + 10] &&
-            gameState.board[currentIndex + 10].startsWith(
-              gameState.currentPlayer
-            )) 
+          gameState.board[currentIndex + 10] &&
+          gameState.board[currentIndex + 10].startsWith(gameState.currentPlayer)
         ) {
           error("You cannot move through your own piece");
           return false;
+        } else {
+          gameState.board[currentIndex + 10] = null;
         }
       }
     }
@@ -305,13 +330,15 @@ function isValidMove(character, move, currentIndex) {
       }
 
       if (
-        (gameState.board[currentIndex - 4] &&
-          gameState.board[currentIndex - 4].startsWith(
-            gameState.currentPlayer === "A" ? "B" : "A"
-          )) 
+        gameState.board[currentIndex - 4] &&
+        gameState.board[currentIndex - 4].startsWith(
+          gameState.currentPlayer === "A" ? "B" : "A"
+        )
       ) {
         error("You cannot move through your own piece");
         return false;
+      } else {
+        gameState.board[currentIndex - 4] = null;
       }
     } else if (move === "FR") {
       if (row <= 1 || col >= 3) {
@@ -320,13 +347,13 @@ function isValidMove(character, move, currentIndex) {
       }
 
       if (
-        (gameState.board[currentIndex - 12] &&
-          gameState.board[currentIndex - 12].startsWith(
-            gameState.currentPlayer
-          )) 
+        gameState.board[currentIndex - 12] &&
+        gameState.board[currentIndex - 12].startsWith(gameState.currentPlayer)
       ) {
         error("You cannot move through your own piece");
         return false;
+      } else {
+        gameState.board[currentIndex - 12] = null;
       }
     } else if (move === "BL") {
       if (row >= 3 || col <= 1) {
@@ -335,13 +362,13 @@ function isValidMove(character, move, currentIndex) {
       }
 
       if (
-        (gameState.board[currentIndex + 12] &&
-          gameState.board[currentIndex + 12].startsWith(
-            gameState.currentPlayer
-          )) 
+        gameState.board[currentIndex + 12] &&
+        gameState.board[currentIndex + 12].startsWith(gameState.currentPlayer)
       ) {
         error("You cannot move through your own piece");
         return false;
+      } else {
+        gameState.board[currentIndex + 12] = null;
       }
     } else if (move === "BR") {
       if (row >= 3 || col >= 3) {
@@ -350,13 +377,13 @@ function isValidMove(character, move, currentIndex) {
       }
 
       if (
-        (gameState.board[currentIndex + 8] &&
-          gameState.board[currentIndex + 8].startsWith(
-            gameState.currentPlayer
-          )) 
+        gameState.board[currentIndex + 8] &&
+        gameState.board[currentIndex + 8].startsWith(gameState.currentPlayer)
       ) {
         error("You cannot move through your own piece");
         return false;
+      } else {
+        gameState.board[currentIndex + 8] = null;
       }
     }
   }
