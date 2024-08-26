@@ -38,31 +38,12 @@ const error = (message) => {
 
 function initializeGame() {
   gameState.board = [
-    "A-P1",
-    "A-P2",
-    "A-H1",
-    "A-H2",
-    "A-P3",
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    "B-P1",
-    "B-P2",
-    "B-H1",
-    "B-H2",
-    "B-P3",
+
+    "A-P1", "A-P2", "A-H1", "A-H2", "A-P3",
+    null, null, null, null, null,
+    null, null, null, null, null,
+    null, null, null, null, null,
+    "B-P1", "B-P2", "B-H1", "B-H2", "B-P3",
   ];
   gameState.currentPlayer = "A";
   gameState.moveHistory = [];
