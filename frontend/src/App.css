@@ -1,6 +1,7 @@
 .App {
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  max-width: 600px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -16,8 +17,8 @@
 .cell {
   width: 60px;
   height: 60px;
-  background-color: #f0d9b5;
-  border: 1px solid #b58863;
+  background-color: #c5eff8;
+  border: 1px solid #939393;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,7 +27,7 @@
 }
 
 .cell:nth-child(odd) {
-  background-color: #b58863;
+  background-color: #5f94ab;
 }
 
 .cell.selected {
@@ -48,8 +49,8 @@
 }
 
 .move-history {
+  max-width: 250px;
   max-height: 200px;
-  overflow-y: auto;
   border: 1px solid #ccc;
   padding: 10px;
   text-align: left;
@@ -60,16 +61,18 @@
   overflow-y: auto;
 }
 
-.start-button {
-  font-size: 18px;
-  padding: 10px 20px;
-  margin-bottom: 20px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
+.history-list li {
+  margin-bottom: 5px;
 }
 
-.start-button:hover {
-  background-color: #45a049;
+.history-list li:last-child {
+  margin-bottom: 0;
+}
+
+.error {
+  color: red;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  font-size: 27px;
+  font-weight: bold;
 }

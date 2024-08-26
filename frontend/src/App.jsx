@@ -8,6 +8,7 @@ function App() {
   const [gameState, setGameState] = useState(null);
   const [selectedCell, setSelectedCell] = useState(null);
   const [winner, setWinner] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     socket.on('connect', () => {
@@ -16,6 +17,13 @@ function App() {
 
     socket.on('gameState', (newGameState) => {
       console.log('Received new game state:', newGameState);
+
+      if (newGameState.error !== null) {
+        setError(newGameState.error);
+        return;
+      }else{
+        setError(null);
+      }
       
       const hasA = newGameState.board.some((cell) => cell && cell.startsWith('A'));
       const hasB = newGameState.board.some((cell) => cell && cell.startsWith('B'));
@@ -87,7 +95,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Chess-like Game</h1>
+      <h1>Chess Game - A new format</h1>
       {gameState ? (
         <>
           {winner && <h2>Player {winner} wins!</h2>}
@@ -103,6 +111,9 @@ function App() {
                 </button>
               ))}
           </div>
+
+          {error && <div className="error">{error}</div>}
+          
           <div className="move-history">
             <h3>Move History</h3>
             <div className="history-list">
