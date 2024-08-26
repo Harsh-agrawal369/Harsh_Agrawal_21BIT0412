@@ -76,15 +76,15 @@ function isValidMove(character, move, currentIndex) {
         return false;
       }
 
-      if (
-        gameState.board[currentIndex - 1] &&
-        gameState.board[currentIndex - 1].startsWith(
-          gameState.currentPlayer === "A" ? "B" : "A"
-        )
-      ) {
-        error("Pawn cannot Kill! Invalid Move");
-        return false;
-      }
+      // if (
+      //   gameState.board[currentIndex - 1] &&
+      //   gameState.board[currentIndex - 1].startsWith(
+      //     gameState.currentPlayer === "A" ? "B" : "A"
+      //   )
+      // ) {
+      //   error("Pawn cannot Kill! Invalid Move");
+      //   return false;
+      // }
     } else if (move === "R") {
       if (col === 4) {
         error("You cannot move off the board");
@@ -99,15 +99,15 @@ function isValidMove(character, move, currentIndex) {
         return false;
       }
 
-      if (
-        gameState.board[currentIndex + 1] &&
-        gameState.board[currentIndex + 1].startsWith(
-          gameState.currentPlayer === "A" ? "B" : "A"
-        )
-      ) {
-        error("Pawn cannot Kill! Invalid Move");
-        return false;
-      }
+      // if (
+      //   gameState.board[currentIndex + 1] &&
+      //   gameState.board[currentIndex + 1].startsWith(
+      //     gameState.currentPlayer === "A" ? "B" : "A"
+      //   )
+      // ) {
+      //   error("Pawn cannot Kill! Invalid Move");
+      //   return false;
+      // }
     } else if (move === "F") {
       if (gameState.currentPlayer === "A") {
         if (row === 4) {
@@ -123,15 +123,15 @@ function isValidMove(character, move, currentIndex) {
           return false;
         }
 
-        if (
-          gameState.board[currentIndex + 5] &&
-          gameState.board[currentIndex + 5].startsWith(
-            gameState.currentPlayer === "A" ? "B" : "A"
-          )
-        ) {
-          error("Pawn cannot Kill! Invalid Move");
-          return false;
-        }
+        // if (
+        //   gameState.board[currentIndex + 5] &&
+        //   gameState.board[currentIndex + 5].startsWith(
+        //     gameState.currentPlayer === "A" ? "B" : "A"
+        //   )
+        // ) {
+        //   error("Pawn cannot Kill! Invalid Move");
+        //   return false;
+        // }
       } else {
         if (row === 0) {
           error("You cannot move off the board");
@@ -146,15 +146,15 @@ function isValidMove(character, move, currentIndex) {
           return false;
         }
 
-        if (
-          gameState.board[currentIndex - 5] &&
-          gameState.board[currentIndex - 5].startsWith(
-            gameState.currentPlayer === "A" ? "B" : "A"
-          )
-        ) {
-          error("Pawn cannot Kill! Invalid Move");
-          return false;
-        }
+        // if (
+        //   gameState.board[currentIndex - 5] &&
+        //   gameState.board[currentIndex - 5].startsWith(
+        //     gameState.currentPlayer === "A" ? "B" : "A"
+        //   )
+        // ) {
+        //   error("Pawn cannot Kill! Invalid Move");
+        //   return false;
+        // }
       }
     } else if (move === "B") {
       if (gameState.currentPlayer === "A") {
@@ -171,15 +171,15 @@ function isValidMove(character, move, currentIndex) {
           return false;
         }
 
-        if (
-          gameState.board[currentIndex - 5] &&
-          gameState.board[currentIndex - 5].startsWith(
-            gameState.currentPlayer === "A" ? "B" : "A"
-          )
-        ) {
-          error("Pawn cannot Kill! Invalid Move");
-          return false;
-        }
+        // if (
+        //   gameState.board[currentIndex - 5] &&
+        //   gameState.board[currentIndex - 5].startsWith(
+        //     gameState.currentPlayer === "A" ? "B" : "A"
+        //   )
+        // ) {
+        //   error("Pawn cannot Kill! Invalid Move");
+        //   return false;
+        // }
       } else {
         if (row === 4) {
           error("You cannot move off the board");
@@ -194,15 +194,15 @@ function isValidMove(character, move, currentIndex) {
           return false;
         }
 
-        if (
-          gameState.board[currentIndex + 5] &&
-          gameState.board[currentIndex + 5].startsWith(
-            gameState.currentPlayer === "A" ? "B" : "A"
-          )
-        ) {
-          error("Pawn cannot Kill! Invalid Move");
-          return false;
-        }
+        // if (
+        //   gameState.board[currentIndex + 5] &&
+        //   gameState.board[currentIndex + 5].startsWith(
+        //     gameState.currentPlayer === "A" ? "B" : "A"
+        //   )
+        // ) {
+        //   error("Pawn cannot Kill! Invalid Move");
+        //   return false;
+        // }
       }
     }
   } else if (character.includes("H1")) {
