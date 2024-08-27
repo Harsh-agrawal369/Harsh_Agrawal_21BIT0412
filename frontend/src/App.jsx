@@ -95,7 +95,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Chess Game - A new format</h1>
+      <h1>Chess Game - A new Approach</h1>
       {gameState ? (
         <>
           {winner && <h2>Player {winner} wins!</h2>}
