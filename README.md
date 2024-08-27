@@ -22,15 +22,15 @@ Move to frontend folder cd ./frontend
 ### Backend
 
 1. Start the backend server: 
-cd backend
-npm run dev
+- cd backend
+- npm run dev
 
 ### Frontend
 
 2. In a new terminal, start the frontend development server:
-cd client
-npm run dev
-frontend will be available at http://localhost:5173
+- cd client
+- npm run dev
+- frontend will be available at http://localhost:5173
 
 ## Game Rules
 
